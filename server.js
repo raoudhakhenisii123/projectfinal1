@@ -60,7 +60,11 @@ app.put('/editTroupe/:id', (req,res)=>{
     let Troupeid=ObjectID(req.params.id)
     db.collection('Troupes').findOneAndUpdate({_id:Troupeid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('Troupe updated')
+        // res.send('Troupe updated')
+        db.collection('Troupes').findOne({_id:Troupeid}, (err,troupe)=>{
+            if(err)throw err
+            res.send(troupe)
+        })
     })
 })
 
@@ -112,7 +116,11 @@ app.put('/editSalle/:id', (req,res)=>{
     let salleid=ObjectID(req.params.id)
     db.collection('Salles').findOneAndUpdate({_id:salleid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('Salle updated')
+        // res.send('Salle updated')
+        db.collection('Salles').findOne({_id:salleid}, (err,salle)=>{
+            if(err)throw err
+            res.send(salle)
+        })
     })
 })
 /***************/
@@ -163,7 +171,11 @@ app.put('/editGateaux/:id', (req,res)=>{
     let Gateauxid=ObjectID(req.params.id)
     db.collection('Gateaux').findOneAndUpdate({_id:Gateauxid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('Gateaux updated')
+        // res.send('Gateaux updated')
+        db.collection('Gateaux').findOne({_id:Gateauxid}, (err,Gateaux)=>{
+            if(err)throw err
+            res.send(Gateaux)
+        })
     })
 })
 /*****************/
@@ -214,7 +226,12 @@ app.put('/editDécors/:id', (req,res)=>{
     let Décorid=ObjectID(req.params.id)
     db.collection('Décors').findOneAndUpdate({_id:Décorid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('Décors updated')
+        // res.send('Décors updated')
+        db.collection('Décors').findOne({_id:Décorid}, (err,Décor)=>{
+            if(err)throw err
+            res.send(Décor)
+        })
+        
     })
 })
 /***************/
@@ -265,7 +282,11 @@ app.put('/editVéhicules/:id', (req,res)=>{
     let Véhiculeid=ObjectID(req.params.id)
     db.collection('Véhicules').findOneAndUpdate({_id:Véhiculeid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('Véhicules updated')
+        // res.send('Véhicules updated')
+        db.collection('Véhicules').findOne({_id:Véhiculeid}, (err,Véhicule)=>{
+            if(err)throw err
+            res.send(Véhicule)
+        })
     })
 })
 /******************/
@@ -316,7 +337,11 @@ app.put('/editClient/:id', (req,res)=>{
     let Clientid=ObjectID(req.params.id)
     db.collection('Clients').findOneAndUpdate({_id:Clientid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('Clients updated')
+        // res.send('Clients updated')
+        db.collection('Clients').findOne({_id:Clientid}, (err,Client)=>{
+            if(err)throw err
+            res.send(Client)
+        })
     })
 })
 /****************/
@@ -366,19 +391,15 @@ app.delete('/deleteréservations/:id', (req,res)=>{
 })
 app.put('/editréservation/:id', (req,res)=>{
     let réservationid=ObjectID(req.params.id)
-    db.collection('Clients').findOneAndUpdate({_id:réservationid}, {$set:{...req.body}},(err,data)=>{
+    db.collection('réservations').findOneAndUpdate({_id:réservationid}, {$set:{...req.body}},(err,data)=>{
         if(err) throw err
-        res.send('réservations updated')
+        // res.send('réservations updated')
+        db.collection('réservations').findOne({_id:réservationid}, (err,réservation)=>{
+            if(err)throw err
+            res.send(réservation)
+        })
     })
 })
-
-
-
-
-
-
-
-
 
 
 
